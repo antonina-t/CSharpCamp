@@ -55,6 +55,13 @@ namespace Pink
         /* How many variables exist after execution of each line? Note their values at each line */
         static void Task3()
         {
+            int number = 5;
+            number = 10;
+            double progress = 0.1;
+            progress = 0.5;
+            number = -8;
+            int otherNumber = 6;
+            number = otherNumber;
         }
 
         /* Swap two variables using an extra variable */
