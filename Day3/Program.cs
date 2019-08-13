@@ -34,16 +34,6 @@ namespace Day3
          */
         static void Task1()
         {
-            var shapes = new List<Shape>
-            {
-                new Square(5),
-                new Circle(2),
-                new Rectangle(3, 2)
-            };
-            foreach (Shape shape in shapes)
-            {
-                Console.WriteLine("The area of my " + shape.GetType().Name + " is " + shape.CalculateArea());
-            }
         }
     }
 }

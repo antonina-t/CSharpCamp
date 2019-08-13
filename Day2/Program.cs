@@ -27,16 +27,8 @@ namespace Day2
         }
 
         /* Write a function that calculates the diagonal of a rectangle with sides a and b. */
-        static double CalculateDiagonal(double a, double b)
-        {
-            return Math.Sqrt(a * a + b * b);
-        }
 
         /* Write a function that prints a congratulation to the name supplied as parameter. */
-        static void Congratulate(string name)
-        {
-            Console.WriteLine($"Congratulations, {name}!");
-        }
         
         /* Arrays */
         static void Example1()
@@ -70,22 +62,6 @@ namespace Day2
          */
         static void Task1()
         {
-            int[] stats = new int[5];
-            int number = -1;
-            while (number != 0)
-            {
-                Console.WriteLine("Enter a number between 1 and 5 or 0 if you are done.");
-                number = int.Parse(Console.ReadLine());
-                if (number > 0 && number < 5)
-                {
-                    stats[number - 1]++;
-                }
-            }
-            Console.WriteLine("Statistics:");
-            for (int i = 0; i < stats.Length; i++)
-            {
-                Console.WriteLine($"{i + 1}s: {stats[i]}");
-            }
         }
 
         /* Create a function ReadArray that returns an int[].
@@ -96,84 +72,18 @@ namespace Day2
          */
         static void Task2()
         {
-            int[] array = ReadArray();
-            Console.WriteLine("The sum value is " + GetSum(array));
-            Console.WriteLine("The min value is " + GetMinValue(array));
-        }
-
-        static int[] ReadArray()
-        {
-            Console.WriteLine("What's the size of the array?");
-            int[] array = new int[int.Parse(Console.ReadLine())];
-            Console.WriteLine("Enter numbers:");
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = int.Parse(Console.ReadLine());
-            }
-            return array;
-        }
-
-        static int GetSum(int[] numbers)
-        {
-            int sum = 0;
-            foreach (int i in numbers)
-            {
-                sum += i;
-            }
-            return sum;
-        }
-
-        static int GetMinValue(int[] numbers)
-        {
-            int minValue = int.MaxValue;
-            foreach(int i in numbers) {
-                if (i < minValue)
-                {
-                    minValue = i;
-                }
-            }
-            return minValue;
         }
 
         /* Create a function InsertSpaces that takes in a string and returns a new string with spaces between each letter. */
         static void Task3()
         {
-            Console.WriteLine("Write a word and I'll blow it up");
-            Console.WriteLine(InsertSpaces(Console.ReadLine()));
-        }
-
-        static string InsertSpaces(string s)
-        {
-            char[] chars = s.ToCharArray();
-            char[] charsWithSpaces = new char[chars.Length * 2];
-
-            for (int i = 0; i < chars.Length; i++)
-            {
-                charsWithSpaces[i * 2] = chars[i];
-                charsWithSpaces[i * 2 + 1] = ' ';
-            }
-            return new string(charsWithSpaces);
         }
 
         /* Create a function that takes in a string and reverses it. */
         static void Task4()
         {
-            Console.WriteLine("Write a word and I'll reverse it");
-            Console.WriteLine(Reverse(Console.ReadLine()));
         }
 
-        static string Reverse(string s)
-        {
-            char[] chars = s.ToCharArray();
-            char[] reverseChars = new char[chars.Length];
-
-            for (int i = 0; i < chars.Length; i++)
-            {
-                reverseChars[chars.Length - i - 1] = chars[i];
-            }
-            return new string(reverseChars);
-        }
-        
         /* string methods */
         static void Example5()
         {
@@ -191,9 +101,6 @@ namespace Day2
          */
         static void Task5()
         {
-            string text = Console.ReadLine();
-            Console.WriteLine(text.Replace("r", ""));
-            Console.WriteLine(text.Replace("th", "z").Replace("r", "rrr"));
         }
 
         /* Write a program that reads in a sentence and the print the same sentence with every second word in uppercase.
@@ -202,14 +109,6 @@ namespace Day2
          */
         static void Task6()
         {
-            string text = Console.ReadLine();
-            bool upper = false;
-            foreach (string word in text.Split(" "))
-            {
-                Console.Write((upper ? word.ToUpper() : word.ToLower()) + " ");
-                upper = !upper;
-            }
-            Console.WriteLine();
         }
 
         /* Lists */
@@ -244,35 +143,6 @@ namespace Day2
         */
         static void Task7()
         {
-            List<string> tasks = new List<string>();
-            int command = -1;
-            while (command != 3)
-            {
-                if (tasks.Count == 0)
-                {
-                    Console.WriteLine("You don't have any tasks.");
-                }
-                else
-                {
-                    for (int i = 0; i < tasks.Count; i++)
-                    {
-                        Console.WriteLine($"{i + 1} {tasks[i]}");
-                    }
-                }
-                Console.WriteLine("1 - Add task\n2 - Remove task\n3 - Exit");
-                command = int.Parse(Console.ReadLine());
-                if (command == 1)
-                {
-                    Console.WriteLine("Enter task");
-                    tasks.Add(Console.ReadLine());
-                }
-                else if (command == 2)
-                {
-                    Console.WriteLine("Enter task number you want to remove");
-                    tasks.RemoveAt(int.Parse(Console.ReadLine()) - 1);
-                }
-                Console.WriteLine();
-            }
         }
 
         /* Dictionaries */
@@ -319,36 +189,6 @@ namespace Day2
         */
         static void Task8()
         {
-            var words = new Dictionary<string, string>();
-            int command = -1;
-            while (command != 3)
-            {
-                Console.WriteLine("1 - Create an entry");
-                Console.WriteLine("2 - Test");
-                Console.WriteLine("3 - Exit");
-                command = int.Parse(Console.ReadLine());
-                if (command == 1)
-                {
-                    Console.Write("English: ");
-                    string english = Console.ReadLine();
-                    Console.Write("Swedish: ");
-                    string swedish = Console.ReadLine();
-                    words[english] = swedish;
-                } else if (command == 2)
-                {
-                    Random random = new Random();
-                    var keys = new List<string>(words.Keys);
-                    while (keys.Count > 0)
-                    {
-                        int randomIndex = random.Next(keys.Count);
-                        string word = keys[randomIndex];
-                        Console.WriteLine("Translate " + word);
-                        string answer = Console.ReadLine();
-                        Console.WriteLine(answer == words[word] ? "Correct!" : "Wrong, the answer is " + words[word]);
-                        keys.RemoveAt(randomIndex);
-                    }
-                }
-            }
         }
     }
 }
