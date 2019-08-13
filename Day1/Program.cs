@@ -241,7 +241,7 @@ namespace Pink
             DateTime tomorrow = today.AddDays(1);
             Console.WriteLine(tomorrow);
             var timeTillTomorrow = tomorrow.Subtract(now);
-            Console.WriteLine((int) timeTillTomorrow.TotalMinutes + " minutes till tomorrow");
+            Console.WriteLine((int)timeTillTomorrow.TotalMinutes + " minutes till tomorrow");
         }
 
         /* Write a program that calculates the number of days till your next birthday. */
