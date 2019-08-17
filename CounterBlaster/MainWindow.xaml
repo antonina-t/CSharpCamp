@@ -1,0 +1,27 @@
+﻿<Window x:Class="CounterBlaster.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CounterBlaster"
+        mc:Ignorable="d"
+        Title="Click counter: I'm, gonna count the clicks for ya!" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="label" HorizontalAlignment="Center" VerticalAlignment="Center" 
+               FontFamily="Showcard Gothic" FontSize="20"  Foreground="#FFFF00B7">Clicks: 0</Label>
+        <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontFamily="Showcard Gothic" FontSize="20" Foreground="#FFFF00B7"
+                Click="Button_Click">Click me!
+        </Button>
+
+
+    </Grid>
+</Window>
