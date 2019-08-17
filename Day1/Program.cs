@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pink
+namespace Day1
 {
     class Program
     {
@@ -191,10 +191,12 @@ namespace Pink
             if (a > b)
             {
                 Console.WriteLine(a + " is larger than b.");
-            } else if (a < b)
+            }
+            else if (a < b)
             {
                 Console.WriteLine(a + " is smaller than b.");
-            } else
+            }
+            else
             {
                 Console.WriteLine(a + " is equal to b.");
             }
@@ -271,7 +273,7 @@ namespace Pink
             int count = 5;
             int i = 1;
             bool grow = true;
-            while(i > 0)
+            while (i > 0)
             {
                 for (int j = 0; j < i; j++)
                 {
@@ -348,7 +350,7 @@ namespace Pink
             DateTime tomorrow = today.AddDays(1);
             Console.WriteLine(tomorrow);
             var timeTillTomorrow = tomorrow.Subtract(now);
-            Console.WriteLine((int) timeTillTomorrow.TotalMinutes + " minutes till tomorrow");
+            Console.WriteLine((int)timeTillTomorrow.TotalMinutes + " minutes till tomorrow");
         }
 
         /* Write a program that calculates the number of days till your next birthday. */
