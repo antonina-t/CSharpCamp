@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Calculator
 {
@@ -29,9 +16,9 @@ namespace Calculator
             NONE
         }
 
-        int currentNumber = 0;
-        bool reset = false;
+        int firstNumber = 0;
         private Op currentOp = Op.NONE;
+        bool reset = false;
 
         public MainWindow()
         {
@@ -46,7 +33,7 @@ namespace Calculator
             }
             if (reset)
             {
-                currentNumber = int.Parse(textBox.Text);
+                firstNumber = int.Parse(textBox.Text);
                 textBox.Text = "";
                 reset = false;
             }
@@ -56,23 +43,26 @@ namespace Calculator
         {
             if (!reset)
             {
-                switch(currentOp)
+                int secondNumber = int.Parse(textBox.Text);
+                int result = secondNumber;
+                switch (currentOp)
                 {
                     case Op.PLUS:
-                        textBox.Text = (currentNumber + int.Parse(textBox.Text)).ToString();
+                        result = firstNumber + secondNumber;
                         break;
                     case Op.MINUS:
-                        textBox.Text = (currentNumber - int.Parse(textBox.Text)).ToString();
+                        result = firstNumber - secondNumber;
                         break;
                     case Op.MUL:
-                        textBox.Text = (currentNumber * int.Parse(textBox.Text)).ToString();
+                        result = firstNumber * secondNumber;
                         break;
                     case Op.DIV:
-                        textBox.Text = (currentNumber / int.Parse(textBox.Text)).ToString();
+                        result = firstNumber / secondNumber;
                         break;
                 }
+                textBox.Text = result.ToString();
+                reset = true;
             }
-            reset = true;
         }
 
         private void button7_Click(object sender, RoutedEventArgs e)
@@ -163,7 +153,7 @@ namespace Calculator
         {
             textBox.Text = "0";
             currentOp = Op.NONE;
-            currentNumber = 0;
+            firstNumber = 0;
             reset = false;
         }
 
@@ -177,7 +167,8 @@ namespace Calculator
         {
             if (textBox.Text != "0")
             {
-                textBox.Text = textBox.Text.StartsWith("-") ? textBox.Text.Substring(1) : "-" + textBox.Text;
+                int newNumber = int.Parse(textBox.Text) * (-1);
+                textBox.Text = newNumber.ToString();
             }
         }
     }
